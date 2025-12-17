@@ -2,10 +2,11 @@ package("xein-repo", function()
 	set_description("the xein-repo package")
 
 	add_urls("https://github.com/ynks/xmake-repo-test.git")
-	add_versions("1.0", "v1.0")
-	add_versions("1.1", "v1.1")
+	add_versions("main", "main")
 
 	on_install(function (package)
+		package:set("always_update", true)
+
 		local configs = {}
 		if package:config("shared") then
 			configs.kind = "shared"
