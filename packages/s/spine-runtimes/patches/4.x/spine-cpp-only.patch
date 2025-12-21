@@ -1,14 +1,11 @@
 diff --git a/CMakeLists.txt b/CMakeLists.txt
-index 17d8657..1111111 100644
+index 17d8657..b111111 100644
 --- a/CMakeLists.txt
 +++ b/CMakeLists.txt
-@@ -1,37 +1,12 @@
+@@ -1,37 +1,7 @@
 -cmake_minimum_required(VERSION 2.8.9)
 -project(spine)
-+cmake_minimum_required(VERSION 3.10)
-+project(spine-cpp LANGUAGES C CXX)
-+include(GNUInstallDirs)
- 
+-
 -if(MSVC)
 -    message("MSCV detected")
 -    set (CMAKE_C_FLAGS "${CMAKE_C_FLAGS}")
@@ -43,12 +40,16 @@ index 17d8657..1111111 100644
 -
 -add_subdirectory(spine-c/spine-c-unit-tests)
 -add_subdirectory(spine-cpp/spine-cpp-unit-tests)
++cmake_minimum_required(VERSION 3.10)
++project(spine-cpp LANGUAGES C CXX)
++include(GNUInstallDirs)
++
 +add_subdirectory(spine-cpp)
 diff --git a/spine-cpp/CMakeLists.txt b/spine-cpp/CMakeLists.txt
-index 706040c..2222222 100644
+index 706040c..c222222 100644
 --- a/spine-cpp/CMakeLists.txt
 +++ b/spine-cpp/CMakeLists.txt
-@@ -1,17 +1,13 @@
+@@ -1,17 +1,11 @@
 -if(MSVC)
 -    message("MSCV detected")
 -    set (CMAKE_C_FLAGS "${CMAKE_C_FLAGS}")

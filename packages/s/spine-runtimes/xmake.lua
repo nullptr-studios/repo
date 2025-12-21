@@ -10,14 +10,13 @@ add_versions("4.0", "4.0")
 add_versions("4.1", "4.1")
 add_versions("4.2", "4.2")
 
-add_patches("3.8", "patches/3.8/cmake.patch", "bbfa70e3e36f8b3beefbc84d8047eb6735e1e75f4dce643d8916e231b13b992c")
-
-add_patches("4.0", "patches/4.x/spine-cpp-only.patch", "e72a544507301c5062bb65991efa5403e13c79459926d366d8620fd9fb5700b9")
-add_patches("4.1", "patches/4.x/spine-cpp-only.patch", "e72a544507301c5062bb65991efa5403e13c79459926d366d8620fd9fb5700b9")
-add_patches("4.2", "patches/4.x/spine-cpp-only.patch", "e72a544507301c5062bb65991efa5403e13c79459926d366d8620fd9fb5700b9")
-add_patches("4.0", "patches/4.x/default-extension-shim.patch", "903a49c9d873956b517374daf232cb25509ee0df0ed3aa6cd44cfa337da3492a")
-add_patches("4.1", "patches/4.x/default-extension-shim.patch", "903a49c9d873956b517374daf232cb25509ee0df0ed3aa6cd44cfa337da3492a")
-add_patches("4.2", "patches/4.x/default-extension-shim.patch", "903a49c9d873956b517374daf232cb25509ee0df0ed3aa6cd44cfa337da3492a")
+add_patches("3.8", "patches/3.8/cmake.patch")
+add_patches("4.0", "patches/4.x/spine-cpp-only.patch")
+add_patches("4.1", "patches/4.x/spine-cpp-only.patch")
+add_patches("4.2", "patches/4.x/spine-cpp-only.patch")
+add_patches("4.0", "patches/4.x/default_extension_shim.patch")
+add_patches("4.1", "patches/4.x/default_extension_shim.patch")
+add_patches("4.2", "patches/4.x/default_extension_shim.patch")
 
 add_configs("shared", {description = "Build shared library.", default = false, type = "boolean", readonly = true})
 
