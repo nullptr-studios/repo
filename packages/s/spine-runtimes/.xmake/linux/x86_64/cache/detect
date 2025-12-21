@@ -1,6 +1,6 @@
 {
     find_program = {
-        gcc = "/usr/sbin/gcc",
-        nim = false
+        nim = false,
+        gcc = "/usr/sbin/gcc"
     }
 }

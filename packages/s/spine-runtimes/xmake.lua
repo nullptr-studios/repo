@@ -12,6 +12,13 @@ add_versions("4.2", "4.2")
 
 add_patches("3.8", "patches/3.8/cmake.patch", "bbfa70e3e36f8b3beefbc84d8047eb6735e1e75f4dce643d8916e231b13b992c")
 
+add_patches("4.0", "patches/4.x/spine-cpp-only.patch", "6c8e6b9a2c6a42ddf2f8e0e9b5d0bfb5c0c1e1c0b9d7f5f0b2e1d3c4a5b6c7d8")
+add_patches("4.1", "patches/4.x/spine-cpp-only.patch", "6c8e6b9a2c6a42ddf2f8e0e9b5d0bfb5c0c1e1c0b9d7f5f0b2e1d3c4a5b6c7d8")
+add_patches("4.2", "patches/4.x/spine-cpp-only.patch", "6c8e6b9a2c6a42ddf2f8e0e9b5d0bfb5c0c1e1c0b9d7f5f0b2e1d3c4a5b6c7d8")
+add_patches("4.0", "patches/4.x/default-extension-shim.patch", "903a49c9d873956b517374daf232cb25509ee0df0ed3aa6cd44cfa337da3492a")
+add_patches("4.1", "patches/4.x/default-extension-shim.patch", "903a49c9d873956b517374daf232cb25509ee0df0ed3aa6cd44cfa337da3492a")
+add_patches("4.2", "patches/4.x/default-extension-shim.patch", "903a49c9d873956b517374daf232cb25509ee0df0ed3aa6cd44cfa337da3492a")
+
 add_configs("shared", {description = "Build shared library.", default = false, type = "boolean", readonly = true})
 
 if is_host("windows") then
@@ -21,29 +28,11 @@ end
 add_deps("cmake")
 
 on_install(function (package)
-	if package:version():eq("3.8") then
-		local configs = {}
-		table.insert(configs, "-DCMAKE_BUILD_TYPE=" .. (package:is_debug() and "Debug" or "Release"))
-		table.insert(configs, "-DBUILD_SHARED_LIBS=" .. (package:config("shared") and "ON" or "OFF"))
-		import("package.tools.cmake").install(package, configs)
-		return
-	end
-
-	local xmake_lua = [[
-	add_rules("mode.debug", "mode.release")
-	set_languages("c++17")
-
-	target("spine-cpp")
-	set_kind("static")
-	add_files("spine-cpp/spine-cpp/src/spine/**.cpp")
-	add_headerfiles("spine-cpp/spine-cpp/include/(**.h)")
-	add_includedirs("spine-cpp/spine-cpp/include", {public = true})
-	if is_plat("windows") then
-		add_defines("NOMINMAX")
-	end
-	]]
-	io.writefile("xmake.lua", xmake_lua)
-	import("package.tools.xmake").install(package)
+	local configs = {
+		"-DCMAKE_BUILD_TYPE=" .. (package:is_debug() and "Debug" or "Release"),
+		"-DBUILD_SHARED_LIBS=" .. (package:config("shared") and "ON" or "OFF")
+	}
+	import("package.tools.cmake").install(package, configs)
 end)
 
 on_test(function (package)
@@ -57,7 +46,6 @@ on_test(function (package)
 		}
 		]]}, {configs = {languages = "c++17"}}))
 	else
-		-- 3.8 API surface
 		assert(package:check_cxxsnippets({test = [[
 		#include <spine/spine.h>
 		void test() {
