@@ -18,7 +18,9 @@ add_deps("spine-runtimes 4.2")
 add_urls("https://github.com/Nullptr-Studios/toast-engine.git")
 add_versions("main", "main")
 add_versions("dev", "dev")
-add_versions("physics-engine", "physics/physics-engine")
+on_load(function (package)
+    package:add("gitref", "physics-engine", "physics/physics-engine")
+end)
 
 add_configs("shared", {description = "Build shared library", default = false, type = "boolean", readonly = true})
 
