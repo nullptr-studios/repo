@@ -1,4 +1,4 @@
-package("spine-runtimes")
+package("spine")
 set_homepage("https://github.com/EsotericSoftware/spine-runtimes")
 set_description("2D skeletal animation runtimes for Spine (C++ runtime)")
 set_license("Spine Runtimes")

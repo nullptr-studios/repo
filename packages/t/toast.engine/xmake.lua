@@ -13,12 +13,11 @@ add_deps("sol2")
 add_deps("tinyobjloader v2.0.0rc13")
 add_deps("imgui v1.92.5-docking")
 add_deps("imguizmo 1.91.3+wip")
-add_deps("spine-runtimes 4.2")
+add_deps("spine 4.2")
 
 add_urls("https://github.com/Nullptr-Studios/toast-engine.git")
 add_versions("main", "main")
-add_versions("dev", "dev")
-add_versions("physics/physics-engine", "physics/physics-engine")
+add_versions("physics-alpha", "physics/physics-engine")
 
 add_configs("shared", {description = "Build shared library", default = false, type = "boolean", readonly = true})
 
