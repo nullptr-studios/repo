@@ -6,7 +6,7 @@ package("vstwebview", function()
 	add_urls("https://github.com/rdaum/vstwebview.git")
 	add_versions("main", "main")
 
-	add_deps("vst3sdk")
+	add_deps("vst3sdk 3.8.0_build_66")
 
 	if is_plat("linux") then
 		add_deps("webkit2gtk")
