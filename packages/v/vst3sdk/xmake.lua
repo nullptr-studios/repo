@@ -4,7 +4,7 @@ package("vst3sdk", function()
 	set_description("Steinberg VST3 SDK")
 
 	add_urls("https://github.com/steinbergmedia/vst3sdk/archive/refs/tags/$(version).tar.gz")
-	add_versions("3.8.0_build_66", "D93C12077D848977D4D397C8AB6721C4B4966223A7707BFE6519AA419C396AF4")
+	add_versions("3.8.0_build_66", "IGNORE")
 
 	on_install(function (package)
 		os.cp("pluginterfaces", package:installdir("include"))
